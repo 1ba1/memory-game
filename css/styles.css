@@ -1,0 +1,57 @@
+body {
+  font-family: Helvetica, sans-serif;
+}
+
+#container {
+  box-sizing: border-box;
+  border: 2px solid gray;
+  display: flex;
+  flex-wrap: wrap;
+  width: 400px;
+  height: 400px;
+  margin: auto;
+}
+
+#container > div {
+  background-color: yellow;
+  box-sizing: border-box;
+  border: 1px solid gray;
+  cursor: pointer;
+  font-size: 48px;
+  position: relative;
+  width: 48px;
+  height: 48px;
+  transition: transform 0.8s;
+  transform-style: preserve-3d;
+  perspective: 1000px;
+}
+
+#container > div > div {
+  position: absolute;
+  width: 100%;
+  height: 100%;
+}
+
+#container > div > div:nth-child(1) {
+  backface-visibility: hidden;
+  background-color: lightgreen;
+  z-index: 2;
+}
+
+#container > div > div:nth-child(2) {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.rotate {
+  transform: rotateY(180deg);
+}
+
+p {
+  font-size: 48px;
+  visibility: hidden;
+
+  text-align: center;
+  color: red;
+}
