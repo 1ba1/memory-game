@@ -33,8 +33,7 @@ body {
 }
 
 #container > div > div:nth-child(1) {
-  -webkit-backface-visibility: hidden;
-          backface-visibility: hidden;
+  backface-visibility: hidden;
   background-color: lightgreen;
   z-index: 2;
 }
