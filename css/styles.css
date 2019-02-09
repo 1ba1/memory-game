@@ -22,8 +22,10 @@ body {
   width: 48px;
   height: 48px;
   transition: transform 0.8s;
-  transform-style: preserve-3d;
-  perspective: 1000px;
+  -webkit-transform: translate3d(0,0,0);
+          transform-style: preserve-3d;
+  -webkit-perspective: 0;
+          perspective: 1000px;
 }
 
 #container > div > div {
@@ -33,7 +35,8 @@ body {
 }
 
 #container > div > div:nth-child(1) {
-  backface-visibility: hidden;
+  -webkit-backface-visibility: hidden;
+          backface-visibility: hidden;
   background-color: lightgreen;
   z-index: 2;
 }
