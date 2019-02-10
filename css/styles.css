@@ -1,5 +1,5 @@
 body {
-  font-family: Helvetica, sans-serif;
+  font-family: 'Sacramento', cursive;
   margin: 0;
   padding: 0;
 }
@@ -9,9 +9,17 @@ body {
   margin-top: 50px;
 }
 
+h1 {
+  color: #c41c17;
+  font-size: 56px;
+  margin: 0;
+  text-align: center;
+}
+
 #container {
-  box-sizing: border-box;
-  border: 2px solid gray;
+  background-color: #c41c17;
+  border: 5px solid #c41c17;
+  border-radius: 10px;
   display: flex;
   flex-wrap: wrap;
   width: 400px;
@@ -20,14 +28,13 @@ body {
 }
 
 #container > div {
-  background-color: yellow;
+  background-color: #f4f255;
   box-sizing: border-box;
-  border: 1px solid gray;
+  border: 1px solid #c41c17;
+  border-radius: 10px;
   cursor: pointer;
   font-size: 48px;
   position: relative;
-  width: 48px;
-  height: 48px;
   transition: transform 0.8s;
   transform-style: preserve-3d;
   perspective: 1000px;
@@ -43,13 +50,15 @@ body {
   -webkit-backface-visibility: hidden;
   backface-visibility: hidden;
   background-color: lightgreen;
-  z-index: 2;
+  border-radius: 10px;
+  z-index: 1;
 }
 
 #container > div > div:nth-child(2) {
   display: flex;
   justify-content: center;
   align-items: center;
+  padding-top: 7px;
 }
 
 .rotate {
@@ -57,22 +66,12 @@ body {
 }
 
 p {
-  font-size: 48px;
-  visibility: hidden;
-  text-align: center;
-  color: red;
   animation: colors 0.5s ease-in-out infinite alternate;
-}
-
-button {
-  border: none;
-  background: none;
-  color: #c41c17;
-  cursor: pointer;
-  display: none;
-  font-size: 50px;
-  margin: auto;
-  outline: none;
+  font-size: 46px;
+  margin: 0;
+  margin-top: 10px;
+  text-align: center;
+  visibility: hidden;
 }
 
 @keyframes colors {
@@ -85,17 +84,37 @@ button {
     color: orange;
   }
   50% {
-    color: yellow;
+    color: white;
   }
 }
 
+button {
+  border: none;
+  background: none;
+  color: #c41c17;
+  cursor: pointer;
+  display: none;
+  font-size: 50px;
+  margin: auto;
+  outline: none;
+  padding: 0;
+}
+
 @media screen and (max-width: 480px) {
+  h1 {
+    font-size: 38px;
+  }
+
   #container {
     width: 280px;
     height: 280px;
   }
 
   p {
-    font-size: 20px;
+    font-size: 32px;
+  }
+
+  button {
+    width: 2%;
   }
 }

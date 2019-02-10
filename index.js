@@ -3,7 +3,7 @@ const images = ['\u{2600}', '\u{2600}', '\u{2615}', '\u{2615}', '\u{2622}',
   '\u{2622}', '\u{2639}', '\u{2639}', '\u{262F}', '\u{262F}', '\u{2654}',
   '\u{2654}', '\u{2693}', '\u{2693}', '\u{265C}', '\u{265C}'];
 
-function distributeImages() { // return random position images
+function distributeImages() { // return random image
   let rand = Math.round(Math.random() * 15),
     count = 0,
     iconDiv = document.createElement('div');
@@ -20,25 +20,13 @@ function distributeImages() { // return random position images
   return iconDiv;
 }
 
-function makeGameBoard() {
-  for (let i = 0; i < 16; i++) {
-    const divFront = document.createElement('div');
-    const divCard = document.createElement('div');
-    const cssCard = 'width: 25%; height: 25%;';
-    divCard.style.cssText = cssCard;
-    divCard.appendChild(divFront);
-    divCard.appendChild(distributeImages());
-    container.appendChild(divCard);
-  }
-  game();
-}
-
 function game() {
   const divs = document.querySelectorAll('#container > div');
   let clickCount = 0, pair = [], guessed = [];
   [...divs].forEach(div => {
-    div.onclick = () => {
+    div.addEventListener('click', function() {
       div.classList.add('rotate');
+      div.style.pointerEvents = "none"; // prevents matching the same card
       pair.push(div.textContent)
       clickCount++;
       if (clickCount === 2 && pair[0] !== pair[1]) {
@@ -56,6 +44,9 @@ function game() {
       if (clickCount === 2) {
         pair = [];
         clickCount = 0;
+        [...divs].forEach(div => {
+          div.style.pointerEvents = "auto"; // makes pointervevents available
+        })                                  // again after one guess
       }
       if (guessed.length === 8) {
         const p = document.querySelector('p');
@@ -66,8 +57,21 @@ function game() {
           location.reload();
         };
       }
-    };
+    })
   })
+}
+
+function makeGameBoard() {
+  for (let i = 0; i < 16; i++) {
+    const divFront = document.createElement('div');
+    const divCard = document.createElement('div');
+    const cssCard = 'width: 25%; height: 25%;';
+    divCard.style.cssText = cssCard;
+    divCard.appendChild(divFront);
+    divCard.appendChild(distributeImages()); // append one random generated img
+    container.appendChild(divCard);
+  }
+  game();
 }
 
 makeGameBoard();
